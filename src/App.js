@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import MyComponent from "./MyComponent";
 
 class App extends Component {
   render() {
@@ -11,9 +12,9 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <div className="container">
-          <input type="text" placeholder="Say Something" />
-          <p className="echo">Echo:</p>
-          <p>This should mirror the text you typed into the input field.</p>
+          {/* <input type="text" placeholder="Say Something" />
+          <p className="echo">Echo:</p> */}
+          <MyComponent />
         </div>
       </div>
     );
