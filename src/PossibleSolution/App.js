@@ -1,14 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from '../logo.svg';
 import '../App.css';
+import CreateNewItem from './CreateNewItem';
+import ItemList from './ItemList';
+import DeleteLastItem from './DeleteLastItem';
 
-class App extends Component {
+class App extends React.Component {
   state = {
-    value: '',
+    items: [],
   };
 
-  handleChange = event => {
-    this.setState({ value: event.target.value });
+  handleAddItem = item => {
+    this.setState(prevState => ({ items: [...prevState.items, item] }));
+  };
+
+  handleDeleteLastItem = event => {
+    this.setState(prevState => ({ items: this.state.items.slice(0, -1) }));
+  };
+
+  noItemsFound = () => {
+    return this.state.items.length === 0;
   };
 
   render() {
@@ -18,16 +29,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
-        <div className="container">
-          <input
-            type="text"
-            placeholder="Say Something"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-          <p className="echo">Echo:</p>
-          <p>{this.state.value}</p>
-        </div>
+        <h2>Shopping List</h2>
+        <CreateNewItem onAddItem={this.handleAddItem} />
+        <DeleteLastItem
+          onDeleteLastItem={this.handleDeleteLastItem}
+          buttonDisabled={this.noItemsFound()}
+        />
+        <ItemList items={this.state.items} />
       </div>
     );
   }
