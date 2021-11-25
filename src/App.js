@@ -1,107 +1,50 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import MovieCardsList from "./MovieCardsList";
 
-const profiles = [
-  {
-    id: 1,
-    userID: "1",
-    favoriteMovieID: "1",
-  },
-  {
-    id: 2,
-    userID: "2",
-    favoriteMovieID: "1",
-  },
-  {
-    id: 3,
-    userID: "4",
-    favoriteMovieID: "5",
-  },
-  {
-    id: 4,
-    userID: "5",
-    favoriteMovieID: "2",
-  },
-  {
-    id: 5,
-    userID: "3",
-    favoriteMovieID: "5",
-  },
-  {
-    id: 6,
-    userID: "6",
-    favoriteMovieID: "4",
-  },
+const myUsers = [
+  { firstName: "first 1", lastName: "last 1", username: "username 1" },
+  { firstName: "first 2", lastName: "last 2", username: "username 2" },
+  { firstName: "first 3", lastName: "last 3", username: "username 3" },
 ];
 
-const users = {
-  1: {
-    id: 1,
-    name: "Jane Jones",
-    userName: "coder",
-  },
-  2: {
-    id: 2,
-    name: "Matthew Page",
-    userName: "mpage",
-  },
-  3: {
-    id: 3,
-    name: "Autumn Green",
-    userName: "user123",
-  },
-  4: {
-    id: 3,
-    name: "John Doe",
-    userName: "user123",
-  },
-  5: {
-    id: 5,
-    name: "Lauren Johnson",
-    userName: "user123",
-  },
-  6: {
-    id: 6,
-    name: "Nicholas Lain",
-    userName: "user123",
-  },
-};
+class AddUserForm extends React.Component {
+  render() {
+    return (
+      <div>
+        <form>
+          <input className="first-name" placeholder="first-name" />
+          <input className="last-name" placeholder="last-name" />
+          <input className="user-name" placeholder="user-name" />
+        </form>
+      </div>
+    );
+  }
+}
 
-const movies = {
-  1: {
-    id: 1,
-    name: "Planet Earth 1",
-  },
-  2: {
-    id: 2,
-    name: "Selma",
-  },
-  3: {
-    id: 3,
-    name: "Million Dollar Baby",
-  },
-  4: {
-    id: 4,
-    name: "Forrest Gump",
-  },
-  5: {
-    id: 5,
-    name: "Get Out",
-  },
-};
+class UserList extends React.Component {
+  render() {
+    const user_list = this.props.myUsers.forEach((a_user) => {
+      <li>
+        {a_user.firstName} | {a_user.lastName} | {a_user.username}
+      </li>;
+    });
+    return <div>{this.user_list}</div>;
+  }
+}
+
+//export default UserList;
+
+//export default AddUserForm;
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">ReactND - Coding Practice</h1>
+          <h1 className="App-title">Video Game Registry</h1>
+          <AddUserForm users={myUsers} />
+          <UserList />
         </header>
-        <h1>How Popular is Your Favorite Movie?</h1>
-        <MovieCardsList profiles={profiles} movies={movies} users={users} />
       </div>
     );
   }
