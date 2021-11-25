@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-
-const myUsers = [
-  { firstName: "first 1", lastName: "last 1", username: "username 1" },
-  { firstName: "first 2", lastName: "last 2", username: "username 2" },
-  { firstName: "first 3", lastName: "last 3", username: "username 3" },
-];
+import PropTypes from "prop-types";
+import UserList from "./UserList";
 
 class AddUserForm extends React.Component {
   render() {
@@ -21,20 +17,13 @@ class AddUserForm extends React.Component {
   }
 }
 
-class UserList extends React.Component {
-  render() {
-    const user_list = this.props.myUsers.forEach((a_user) => {
-      <li>
-        {a_user.firstName} | {a_user.lastName} | {a_user.username}
-      </li>;
-    });
-    return <div>{this.user_list}</div>;
-  }
-}
-
-//export default UserList;
-
 //export default AddUserForm;
+
+const myUsers = [
+  { firstName: "first 1", lastName: "last 1", username: "username 1" },
+  { firstName: "first 2", lastName: "last 2", username: "username 2" },
+  { firstName: "first 3", lastName: "last 3", username: "username 3" },
+];
 
 class App extends Component {
   render() {
@@ -42,8 +31,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Video Game Registry</h1>
-          <AddUserForm users={myUsers} />
-          <UserList />
+          <AddUserForm />
+          <UserList users={myUsers} />
         </header>
       </div>
     );
