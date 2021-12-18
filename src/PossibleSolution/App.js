@@ -1,30 +1,42 @@
-import React, { Component } from "react";
-import logo from "../logo.svg";
-import "../App.css";
-import AddUser from "./AddUser";
-import UserList from "./UserList";
+import React, { Component } from 'react';
+import logo from '../logo.svg';
+import '../App.css';
+import ChatWindow from './ChatWindow';
+
+const users = [{ username: 'Amy' }, { username: 'Jon' }];
 
 class App extends Component {
   state = {
-    users: [],
+    messages: [], //will hold this --> {usermame: 'Amy', text: 'a'}
   };
-
-  createContact = (user) => {
-    user.numGamesPlayed = 0;
-    this.setState((currState) => ({
-      users: [...currState.users, user],
+  onMessage = (username, message) => {
+    const newMessage = {
+      ['username']: username,
+      ['text']: message,
+    };
+    this.setState(currState => ({
+      messages: currState.messages.concat([newMessage]),
     }));
   };
-
   render() {
+    const { messages } = this.state;
+
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
-        <AddUser users={this.state.users} onAddUser={this.createContact} />
-        <UserList users={this.state.users} />
+        <div className="container">
+          {users.map(user => (
+            <ChatWindow
+              key={user.username}
+              user={user}
+              messages={messages}
+              onMessage={this.onMessage}
+            />
+          ))}
+        </div>
       </div>
     );
   }
