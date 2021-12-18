@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class AddUser extends Component {
   state = {
     user: {
-      firstName: '',
-      lastName: '',
-      username: '',
+      firstName: "",
+      lastName: "",
+      username: "",
     },
     userExists: false,
   };
 
-  contactExists = currUsername => {
+  contactExists = (currUsername) => {
     const users = this.props.users;
     for (let user of users) {
       if (user.username === currUsername) {
@@ -21,10 +21,9 @@ class AddUser extends Component {
     return false;
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const userExists = this.contactExists(this.state.user.username);
-
     if (!userExists) {
       this.props.onAddUser(this.state.user);
     }
@@ -34,10 +33,10 @@ class AddUser extends Component {
     }));
   };
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    this.setState(currState => ({
+    this.setState((currState) => ({
       ...currState,
       user: {
         ...currState.user,
@@ -48,7 +47,7 @@ class AddUser extends Component {
 
   isDisabled = () => {
     const { firstName, lastName, username } = this.state.user;
-    return firstName === '' || lastName === '' || username === '';
+    return firstName === "" || lastName === "" || username === "";
   };
 
   render() {
@@ -86,7 +85,7 @@ class AddUser extends Component {
         {this.state.userExists ? (
           <p className="error">You cannot add a user that already exists.</p>
         ) : (
-          ''
+          ""
         )}
       </div>
     );

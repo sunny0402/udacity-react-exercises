@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import logo from '../logo.svg';
-import '../App.css';
-import AddUser from './AddUser';
-import UserList from './UserList';
+import React, { Component } from "react";
+import logo from "../logo.svg";
+import "../App.css";
+import AddUser from "./AddUser";
+import UserList from "./UserList";
 
 class App extends Component {
   state = {
     users: [],
   };
 
-  createContact = user => {
+  createContact = (user) => {
     user.numGamesPlayed = 0;
-    this.setState(currState => ({
+    this.setState((currState) => ({
       users: [...currState.users, user],
     }));
   };

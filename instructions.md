@@ -29,8 +29,9 @@ changed to "username1 played \* games."
 
 State management is at the heart of React. It allows us to have a single source
 of truth for our entire application. That means that we don't need to make sure
-that our data is synched across multiple components; React does it for us. It
-happens via unidirectional data flow: parent components pass properties to
+that our data is synched across multiple components; React does it for us.
+
+It happens via unidirectional data flow: parent components pass properties to
 child components as props.
 
 Remember that state cannot be modified outside of the component in which it is

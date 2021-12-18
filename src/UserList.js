@@ -1,14 +1,31 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import MyUser from "./MyUser";
 
 class UserList extends Component {
+  state = {
+    games_played_panel: true,
+  };
+
+  toggleGamesPlayedPanel = () =>
+    this.setState((previousState) => ({
+      games_played_panel: !previousState.games_played_panel,
+    }));
+
   render() {
+    const { games_played_panel } = this.state;
+    const { users } = this.props;
     return (
       <div>
-        {this.props.users.map((a_user, index) => (
-          <li key={index}>
-            {a_user.firstName} | {a_user.lastName} | {a_user.username}
-          </li>
+        {users.map((a_user, index) => (
+          <ol key={index}>
+            <MyUser
+              key={a_user.username}
+              user={a_user}
+              games_played_panel={this.toggleGamesPlayedPanel}
+            />
+            <button onClick={this.toggleGamesPlayedPanel}>Toggle</button>
+          </ol>
         ))}
       </div>
     );
