@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import MyChatWindow from "./MyChatWindow";
 
-class AddMessage extends Component {
+class MyAddMessage extends Component {
   state = {
-    message: "",
+    message_state: "",
   };
 
   handleInputChange = (event) => {
-    const { value } = event.target;
+    const { new_value } = event.target;
 
     this.setState(() => ({
-      message: value,
+      message_state: new_value,
     }));
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-
-    //Call the callback function that was passed to this component from ChatWindow
-    this.props.onMessage(this.state.message);
+    this.props.newMessage(this.state.message_state);
   };
 
   isDisabled = () => {
@@ -28,15 +27,14 @@ class AddMessage extends Component {
 
   render() {
     const { message } = this.state;
-
     return (
       <div>
         <form onSubmit={this.handleSubmit} className="input-group">
           <input
             type="text"
             className="form-control"
-            value={message}
             placeholder="Enter your message..."
+            value={message}
             onChange={this.handleInputChange}
           />
           <div className="input-group-append">
@@ -50,8 +48,8 @@ class AddMessage extends Component {
   }
 }
 
-AddMessage.propTypes = {
-  onMessage: PropTypes.func.isRequired,
+MyAddMessage.PropTypes = {
+  newMessage: PropTypes.func.isRequired,
 };
 
-export default AddMessage;
+export default MyAddMessage;

@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-const MessageHistory = props => {
+const MessageHistory = (props) => {
   const { messages, user } = props;
 
   return (
@@ -9,7 +9,11 @@ const MessageHistory = props => {
       {messages.map((message, index) => (
         <li
           key={index}
-          className={message.username === user.username ? 'message sender' : 'message recipient'}
+          className={
+            message.username === user.username
+              ? "message sender"
+              : "message recipient"
+          }
         >
           <p>{`${message.username}: ${message.text}`}</p>
         </li>
