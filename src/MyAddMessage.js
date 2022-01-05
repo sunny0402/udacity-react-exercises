@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import MyChatWindow from "./MyChatWindow";
 
 class MyAddMessage extends Component {
   state = {

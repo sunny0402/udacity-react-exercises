@@ -7,20 +7,23 @@ const MyMessageHistory = (props) => {
   return (
     <ul className="message-list">
       {the_messages.map((a_message, index) => {
-        <li
-          key={index}
-          className={
-            a_message.username === the_user.username
-              ? "message sender"
-              : "message recipient"
-          }
-        >
-          <p>
-            {`
+        // need a return for the map function!
+        return (
+          <li
+            key={index}
+            className={
+              a_message.username === the_user.username
+                ? "message sender"
+                : "message recipient"
+            }
+          >
+            <p>
+              {`
                     ${a_message.username}: 
                     ${a_message.text}`}
-          </p>
-        </li>;
+            </p>
+          </li>
+        );
       })}
     </ul>
   );
