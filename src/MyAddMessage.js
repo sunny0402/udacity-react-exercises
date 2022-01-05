@@ -8,10 +8,10 @@ class MyAddMessage extends Component {
   };
 
   handleInputChange = (event) => {
-    const { new_value } = event.target;
+    const { value } = event.target;
 
     this.setState(() => ({
-      message_state: new_value,
+      message_state: value,
     }));
   };
 
@@ -21,12 +21,12 @@ class MyAddMessage extends Component {
   };
 
   isDisabled = () => {
-    const { message } = this.state;
-    return message === "";
+    const { message_state } = this.state;
+    return message_state === "";
   };
 
   render() {
-    const { message } = this.state;
+    const { message_state } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit} className="input-group">
@@ -34,7 +34,7 @@ class MyAddMessage extends Component {
             type="text"
             className="form-control"
             placeholder="Enter your message..."
-            value={message}
+            value={message_state}
             onChange={this.handleInputChange}
           />
           <div className="input-group-append">
@@ -48,7 +48,7 @@ class MyAddMessage extends Component {
   }
 }
 
-MyAddMessage.PropTypes = {
+MyAddMessage.propTypes = {
   newMessage: PropTypes.func.isRequired,
 };
 

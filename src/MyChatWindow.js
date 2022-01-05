@@ -13,7 +13,7 @@ class MyChatWindow extends Component {
       <div className="chat-window">
         <h2>The Chat Window</h2>
         <div className="name sender">{the_user.username}</div>
-        <MyMessageHistory a_user={the_user} message_list={the_messages} />
+        <MyMessageHistory the_user={the_user} the_messages={the_messages} />
         <MyAddMessage newMessage={this.newMessage} />
       </div>
     );
@@ -22,8 +22,8 @@ class MyChatWindow extends Component {
 
 MyChatWindow.propTypes = {
   newMessage: PropTypes.func.isRequired,
+  the_messages: PropTypes.array.isRequired,
   the_user: PropTypes.object.isRequired,
-  message_list: PropTypes.array.isRequired,
 };
 
 export default MyChatWindow;

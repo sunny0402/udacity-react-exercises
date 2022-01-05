@@ -27,7 +27,9 @@ const MyMessageHistory = (props) => {
 };
 
 MyMessageHistory.propTypes = {
-  message_list: PropTypes.array.isRequired,
-  a_user: PropTypes.object.isRequired,
+  // message_list: PropTypes.array.isRequired,
+  // a_user: PropTypes.object.isRequired,
+  the_messages: PropTypes.array.isRequired,
+  the_user: PropTypes.object.isRequired,
 };
 export default MyMessageHistory;

@@ -22,7 +22,10 @@ class App extends Component {
   };
 
   render() {
-    const { messages } = this.state;
+    //fix
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+    //destructure app_message_state from state
+    const { app_message_state } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -35,7 +38,7 @@ class App extends Component {
               key={user.username}
               newMessage={this.newMessage}
               the_user={user}
-              message_list={messages}
+              the_messages={app_message_state}
             />
           ))}
         </div>
